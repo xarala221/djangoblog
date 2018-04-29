@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}
+    All the blog post
+{% endblock title %}
+    
+
+{% block content %}
+{% if user.is_authenticated %}
+    <h1 class="float-sm-right"><a href="{% url 'blog:create' %}"> Add Post</a></h1>
+{% endif %}
+<h1>{{title}}</h1>
+    {% if blogs %}  
+        {% for blog in blogs %}
+        <div class="row">
+        <div class="col-md-4 col-offse-4">
+        {% if blog.picture %}
+        <img src=" {{ blog.picture.url }} " alt="" srcset="" class="img-thumbnail">
+        {% endif %}
+        </div>
+        <div class="col-md-8 col-offse-8">
+        <h1><a href="{% url 'blog:details' blog.id %}">{{ blog.title }}</a></h1>
+        <p>Publié : {{ blog.created_at }}</p>
+        <p>{{ blog.content|truncatewords:80 }}</p>
+        <a href="{% url 'blog:details' blog.id %}" class="btn btn-secondary">Continue...</a>
+        <hr><br>
+        </div>
+        </div>
+        {% endfor %}
+    {% else %}
+    <p>There are no post</p>
+    {% endif %}
+   
+<!--
+<nav aria-label="...">
+<ul class="pagination">
+{% if blogs.has_previous %}
+    <a  class="page-link" href="?page=1">&laquo; first</a> 
+    <a  class="page-link" href="?page={{ blogs.previous_page_number }}">previous</a>
+{% endif %}
+
+<li class="page-item">
+        <span class="sr-only">(current)</span> Page {{ blogs.number }} of {{ blogs.paginator.num_pages }}.
+</li>
+
+{% if blogs.has_next %}
+    <a class="page-link" href="?page={{ blogs.next_page_number }}">next</a>
+    <a class="page-link" href="?page={{ blogs.paginator.num_pages }}">last &raquo;</a>
+{% endif %}
+</ul>
+</nav>
+-->
+
+{% endblock content %}

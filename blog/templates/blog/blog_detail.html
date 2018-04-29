@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+    The detail page
+{% endblock title %}
+    
+
+{% block content %}
+    <h1>{{ blog.title }}</h1>
+    {% if blog.picture %}
+            <img src=" {{ blog.picture.url }} " alt="" srcset="" class="img-responsive">
+            {% endif %}
+    <p>{{ blog.content }}</p>
+    <div class="text-center">
+        <p class="well">By : <b>{{ blog.author.first_name }}</b></p><br>
+    </div>
+    
+    {% if user.is_authenticated %}<p><span class="float-sm-right"><a href="{% url 'blog:delete' blog.id %}" class="btn btn-danger">Delete</a></span> <span class="float-sm-left"><a href="{% url 'blog:update' blog.id %}" class="btn btn-primary">Edit</a></span></p>{% endif %}
+    <!-- <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="5"></div>-->
+{% endblock content %}
+    

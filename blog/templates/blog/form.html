@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load django_markdown %}
+
+{% block title %}
+    Add blog post
+{% endblock title %}
+    
+
+{% block content %}
+
+    <h1>{{ title }}</h1>
+    <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+        <div class="form-group">
+           {{ form.as_p }}
+        </div>    
+        <input type="submit" value="{{ title }}" class="btn btn-primary">
+    </form>
+{% endblock content %}

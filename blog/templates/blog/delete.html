@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Add blog post
+{% endblock title %}
+    
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    <form method="POST">{% csrf_token %}
+       <h2>Are you Sure to delete <span style="color:rgb(255, 15, 15);">{{ blog.title }}</span> </h2>
+        <input type="submit" value="Yes" class="btn btn-danger">
+    </form>
+{% endblock content %}
+    

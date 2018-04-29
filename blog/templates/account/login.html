@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="POST">{% csrf_token %}
+    <!--
+<table class="table table-dark">
+    <tbody>
+    <tr>
+        <td><label for="username">Username</label></td>
+        <td><input type="text" name="username" id="username"></td>
+    </tr>
+    <tr>
+        <td><label for="password">Password</label></td>
+        <td><input type="password" name="password"></td>
+    </tr>
+    <p>{{ error }}</p>
+</tbody>
+</table>
+-->
+<div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" class="form-control">
+      </div>
+      <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-control"> 
+    </div>
+    <p>{{ error }}</p>
+<button type="submit" class="btn btn-secondry">Login</button>
+</form>
+{% endblock content %}
